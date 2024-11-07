@@ -37,3 +37,9 @@ menuLinks.forEach(ele => {
 // ============ DOM Manipulation (Part Two) ============
 
 // Part 2: Adding Additional HTML and CSS
+
+const subMenuEl = document.getElementById("sub-menu");
+// console.log(subMenuEl)
+subMenuEl.style.height = "100%";
+subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)';
+
