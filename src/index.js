@@ -68,15 +68,21 @@ subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
 subMenuEl.classList.add("flex-around");
 subMenuEl.style.position = "absolute";
 
+// Part 4: Adding Menu Interaction  /  Part 5: Adding Submenu interaction
+
 const topMenuLinks = topMenuEl.querySelectorAll("#top-menu a");
 // console.log(topMenuLinks)
 topMenuEl.addEventListener("click", (evt) => {
   evt.preventDefault();
-  const menuLinks = evt.target;
-  if (menuLinks.tagName !== "A") return;
+  const links = evt.target;
+  if (links.tagName !== "A") return;
 
   topMenuLinks.forEach((a) => a.classList.remove("active"));
-  menuLinks.classList.add("active");
+  links.classList.add("active");
 
-  console.log(menuLinks.textContent);
+  const subMenuLinks = menuLinks.find((a) => a.text === links.textContent);
+
+  if (subMenuLinks.subLinks) subMenuEl.style.top = "100%";
+  else subMenuEl.style.top = "0";
+  console.log(subMenuEl.textContent);
 });
