@@ -76,23 +76,28 @@ let topMenuLinks = topMenuEl.querySelectorAll("a");
 topMenuEl.addEventListener("click", (evt) => {
   evt.preventDefault();
 
-  let links = evt.target;
+  const links = evt.target;
   if (links.tagName !== "A") return;
 
-  topMenuLinks.forEach((a) => a.classList.remove('active'));
-  links.classList.add('active');
+  // +++++++++++++ fixed toggle active class ++++++++++++ 
+  if(links.classList.contains("active")) {
+    links.classList.remove("active");
+    subMenuEl.style.top = "0";
+    return;
+  }
+
+  topMenuLinks.forEach((a) => a.classList.remove("active"));
+  links.classList.add("active");
   // console.log(links.classList)
-  let subMenuLinks = menuLinks.find((a) => a.text === links.textContent);
+  const subMenuLinks = menuLinks.find((a) => a.text === links.textContent);
   // console.log(subMenuLinks)
 
-  if (subMenuLinks.subLinks && subMenuLinks.subLinks) {
+  if (subMenuLinks && subMenuLinks.subLinks) {
     subMenuEl.style.top = "100%";
-    subMenuEl.innerHTML = "";
 
     buildSubMenu(subMenuLinks.subLinks);
   } else {
     subMenuEl.style.top = "0";
-    subMenuEl.innerHTML = "";
   }
 });
 
