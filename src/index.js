@@ -113,5 +113,10 @@ subMenuEl.addEventListener("click", evt => {
   const sbEl = evt.target;
   if(sbEl.tagName !== "A") return;
 
-  
+  subMenuEl.style.top = "0";
+
+  topMenuLinks.forEach(a => a.classList.remove("active"));
+
+  const mainEl = document.querySelector("main");
+  mainEl.innerHTML = `<h1>${sbEl.textContent}</h1>`
 })
