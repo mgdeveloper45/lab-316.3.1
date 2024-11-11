@@ -106,3 +106,12 @@ function buildSubMenu(subLinks) {
     subMenuEl.appendChild(subLink)
   })
 }
+
+subMenuEl.addEventListener("click", evt => {
+  evt.preventDefault();
+
+  const sbEl = evt.target;
+  if(sbEl.tagName !== "A") return;
+
+  
+})
